@@ -1,0 +1,58 @@
+Error starting at line : 2 in command -
+INSERT INTO EMPLOYEES VALUES (1,'Tibyan','Saad',TO_DATE('01/06/2002', 'DD/MM/YYYY'),'Female')
+Error report -
+ORA-01950: no privileges on tablespace 'USERS'
+
+Error starting at line : 1 in command -
+INSERT INTO DEPARTMENTS VALUES (1,HR,HQ,TO_DATE('01/02/2026', 'DD/MM/YYYY'),1)
+Error at Command Line : 1 Column : 38
+Error report -
+SQL Error: ORA-00984: column not allowed here
+
+https://docs.oracle.com/error-help/db/ora-00984/00984. 00000 -  "column not allowed here"
+*Cause:    A column name was used in an expression where it was not
+           permitted, such as in the VALUES clause of an INSERT
+           statement.
+*Action:   Check the syntax of the statement and use column names
+           only where appropriate.
+
+More Details :
+https://docs.oracle.com/error-help/db/ora-00984/
+
+Error starting at line : 8 in command -
+ALTER TABLE DEPENDENTS ADD CONSTRAINT pk_depnamessn PRIMARY KEY (DEPENDENT_NAME,SSN)
+Error report -
+ORA-02260: table can have only one primary key
+
+https://docs.oracle.com/error-help/db/ora-02260/02260. 00000 -  "table can have only one primary key"
+*Cause:    Self-evident.
+*Action:   Remove the extra primary key.
+
+Error starting at line : 14 in command -
+ALTER TABLE WORKING_HOURS ADD CONSTRAINT fk_ssnhours FOREIGN KEY (SSN) REFERENCES EMPLOYEE(SSN)
+Error report -
+ORA-00942: table or view does not exist
+
+https://docs.oracle.com/error-help/db/ora-00942/00942. 00000 -  "table or view%s does not exist"
+*Cause:    The specified table or view did not exist, or a synonym
+           pointed to a table or view that did not exist.
+           To find existing user tables and views, query the
+           ALL_TABLES and ALL_VIEWS data dictionary views. Certain
+           privileges may be required to access the table. If an
+           application returned this message, then the table that the
+           application tried to access did not exist in the database, or
+           the application did not have access to it.
+*Action:   Check each of the following
+           - The spelling of the table or view name is correct.
+           - The referenced table or view name does exist.
+           - The synonym points to an existing table or view.
+
+
+Error starting at line : 15 in command -
+ALTER TABLE WORKING_HOURS ADD CONSTRAINT fk_pnumhours FOREIGN KEY (PNUM) REFERENCES PROJECTS(PNUM)
+Error report -
+ORA-00904: "PNUM": invalid identifier
+
+https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 -  "%s: invalid identifier"
+*Cause:    The identifier or column name entered was invalid.
+*Action:   Ensure the following
