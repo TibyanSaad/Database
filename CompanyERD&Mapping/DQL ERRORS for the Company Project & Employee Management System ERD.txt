@@ -1,0 +1,6 @@
+ORA-00904: "WORKING_HOURS": invalid identifier
+
+https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 -  "%s: invalid identifier"
+*Cause:    The identifier or column name entered was invalid.
+*Action:   Ensure the following
+Error at Line: 6 Column: 12
