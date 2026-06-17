@@ -7,9 +7,6 @@
 -- Task 1
 -- ================================================
 
-SELECT * FROM EMPLOYEE;
-
-
 
 -- removing the default sequence added at table creation
 ALTER TABLE EMPLOYEE MODIFY (EMP_ID NUMBER);
@@ -33,6 +30,9 @@ VALUES ('Lina', 'Al-Busaidi', 'F', 27, 'lina.busaidi@ems.com', 'Pass@9012', 2, 2
 
 INSERT INTO EMPLOYEE (FNAME, LNAME, GENDER, AGE, EMP_EMAIL, EMP_PASS, JOB_ID, SALARY_ID)
 VALUES ('Mariam', 'Al-Riyami', 'F', 26, 'mariam.riyami@ems.com', 'Pass@3344', 3, 3);
+
+-- checking 
+SELECT * FROM EMPLOYEE;
 
 
 -- ================================================

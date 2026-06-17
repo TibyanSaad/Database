@@ -28,6 +28,7 @@ BEGIN
 
     COMMIT;
 EXCEPTION
+    -- I already have a unique constraint for email during table creation
     WHEN DUP_VAL_ON_INDEX THEN
         RAISE_APPLICATION_ERROR(-20001, 'Error: Email already exists in the system.');
 END;

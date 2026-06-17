@@ -212,3 +212,46 @@ JOIN LEAVE L ON E.EMP_ID=L.EMP_ID WHERE LOWER(L.REASON) LIKE LOWER('%sick%');
 -- Departments and their employees
 SELECT D.NAME FROM EMPLOYEE E
 JOIN JOB_DEPARTMENT D ON D.JOB_ID = E.JOB_ID WHERE(SELECT JOB_ID FROM EMPLOYEE);
+
+
+-- ================================================
+-- Task 3
+-- ================================================
+
+-- Give a 10% salary increase to all employees in the 'Engineering' department
+UPDATE SALARY_BONUS SET BONUS = BONUS * 1.10
+WHERE JOB_ID IN (SELECT JOB_ID FROM JOB_DEPARTMENT WHERE NAME = 'Engineering');
+
+-- Update the emp_email of all employees to lowercase using Oracle's LOWER() function.
+UPDATE EMPLOYEE SET EMP_EMAIL = LOWER(EMP_EMAIL);
+
+-- Set the salary_range in JOB_DEPARTMENT to 'REVISED' for any department whose average total payroll
+-- exceeds 8000.
+UPDATE JOB_DEPARTMENT SET SALARY_RANGE = 'REVISED' WHERE JOB_ID IN 
+(SELECT D.JOB_ID FROM JOB_DEPARTMENT D
+JOIN EMPLOYEE E ON E.JOB_ID = D.JOB_ID
+JOIN PAYROLL P ON P.EMP_ID = E.EMP_ID
+GROUP BY D.JOB_ID HAVING AVG(P.TOTAL_AMOUNT) > 8000); 
+
+
+-- ================================================
+-- Task 4
+-- ================================================
+
+SELECT * FROM LEAVE;
+
+-- Delete all LEAVE records older than 2 years from today.
+DELETE FROM LEAVE WHERE LEAVE_DATE < ADD_MONTHS(SYSDATE, -24);
+
+-- Delete QUALIFICATION records for employees who no longer exist in the EMPLOYEE table
+DELETE FROM QUALIFICATION WHERE EMP_ID NOT IN 
+(SELECT EMP_ID FROM EMPLOYEE);
+
+-- Before executing (b), write a SELECT to preview which records would be deleted.
+-- After each DELETE, verify the result with a SELECT COUNT(*).
+SELECT COUNT(*) FROM QUALIFICATION WHERE EMP_ID NOT IN 
+(SELECT EMP_ID FROM EMPLOYEE);
+
+
+
+
